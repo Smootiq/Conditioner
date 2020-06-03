@@ -6,22 +6,42 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ConditionerAdvancedTest {
     @Test
-    public void shouldCreate() {
-        ConditionerAdvanced conditioner = new ConditionerAdvanced();
+    public void shouldIdCreate() {
+        Conditioner conditioner = new Conditioner();
+        String expected = "Кондишн";
 
-        String expected = "bosch";
-        assertNull( conditioner.getName() );
-        conditioner.setName( expected );
-        assertEquals( expected, conditioner.getName());
+        assertNull(conditioner.getName());
+        conditioner.setName(expected);
+        assertEquals(expected, conditioner.getName());
     }
     @Test
     public void shouldSetterLogic() {
-        ConditionerAdvanced conditioner = new ConditionerAdvanced();
-        conditioner.setMaxTemperature( 25 );
-        conditioner.setMinTemperature( 12 );
+        Conditioner conditioner = new Conditioner();
+        conditioner.setMaxTemperature(25);
+        conditioner.setMinTemperature(12);
 
-        assertEquals( 0, conditioner.getCurrentTemperature());
-        conditioner.setCurrentTemperature( 22 );
-        assertEquals( 22, conditioner.getCurrentTemperature());
+        assertEquals(0, conditioner.getCurrentTemperature());
+        conditioner.setCurrentTemperature(22);
+        assertEquals(22, conditioner.getCurrentTemperature());
+    }
+    @Test
+    public void increaseCurrentTemperature() {
+        Conditioner conditioner = new Conditioner();
+        conditioner.setMaxTemperature(25);
+        conditioner.setMinTemperature(12);
+
+        assertEquals( 0, conditioner.getCurrentTemperature() );
+        conditioner.setMinDecreaseCurrentTemperature(15);
+        assertEquals( 0, conditioner.getCurrentTemperature() );
+    }
+    @Test
+    public void decreaseCurrentTemperature() {
+        Conditioner conditioner = new Conditioner();
+        conditioner.setMaxTemperature(25);
+        conditioner.setMinTemperature(0);
+
+        assertEquals( 0, conditioner.getCurrentTemperature() );
+        conditioner.setMaxIncreaseCurrentTemperature(19);
+        assertEquals( 0, conditioner.getCurrentTemperature() );
     }
 }
